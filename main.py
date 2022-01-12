@@ -9,7 +9,7 @@ camera = cv2.VideoCapture(0)
 out = cv2.VideoWriter(filename, -1, 20.0, (640,480))
 fps = 44100
 duration = 40
-print("Recording..")
+print("Recording....")
 print(camera.get(cv2.CAP_PROP_FRAME_WIDTH))
 print(camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
 while camera.isOpened():
@@ -38,10 +38,6 @@ while camera.isOpened():
                             (0, 255, 255), 2, cv2.LINE_AA)
         x, y, w, h = cv2.boundingRect(c)
         cv2.rectangle(frame1, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-        recording = sounddevice.rec(int(duration * fps), samplerate=fps, channels=2)
-        #Below change the destination you'd like the output to be saved to.
-        write("pythonProject/securitycam/output.wav", fps, recording)
 
         out.write(frame1)
 
